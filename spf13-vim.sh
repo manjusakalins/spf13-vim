@@ -16,7 +16,7 @@
 
 ############################  SETUP PARAMETERS
 app_name='spf13-vim'
-[ -z "$APP_PATH" ] && APP_PATH="$HOME/.spf13-vim-3"
+[ -z "$APP_PATH" ] && APP_PATH="$HOME/4Tdata/my_codes/in_github/spf13-vim"
 [ -z "$REPO_URI" ] && REPO_URI='https://github.com/spf13/spf13-vim.git'
 [ -z "$REPO_BRANCH" ] && REPO_BRANCH='3.0'
 debug_mode='0'
@@ -105,7 +105,7 @@ sync_repo() {
 
     if [ ! -e "$repo_path" ]; then
         mkdir -p "$repo_path"
-        git clone -b "$repo_branch" "$repo_uri" "$repo_path"
+        #git clone -b "$repo_branch" "$repo_uri" "$repo_path"
         ret="$?"
         success "Successfully cloned $repo_name."
     else
