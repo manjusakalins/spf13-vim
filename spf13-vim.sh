@@ -15,13 +15,15 @@
 #   limitations under the License.
 
 ############################  SETUP PARAMETERS
+PWWD=$(pwd)
 app_name='spf13-vim'
-[ -z "$APP_PATH" ] && APP_PATH="$HOME/4Tdata/my_codes/in_github/spf13-vim"
+[ -z "$APP_PATH" ] && APP_PATH="$PWWD"
 [ -z "$REPO_URI" ] && REPO_URI='https://github.com/spf13/spf13-vim.git'
 [ -z "$REPO_BRANCH" ] && REPO_BRANCH='3.0'
 debug_mode='0'
 fork_maintainer='0'
 [ -z "$VUNDLE_URI" ] && VUNDLE_URI="https://github.com/gmarik/vundle.git"
+echo $APP_PATH
 
 ############################  BASIC SETUP TOOLS
 msg() {
@@ -105,7 +107,7 @@ sync_repo() {
 
     if [ ! -e "$repo_path" ]; then
         mkdir -p "$repo_path"
-        #git clone -b "$repo_branch" "$repo_uri" "$repo_path"
+        git clone -b "$repo_branch" "$repo_uri" "$repo_path"
         ret="$?"
         success "Successfully cloned $repo_name."
     else
@@ -182,11 +184,11 @@ program_must_exist "git"
 do_backup       "$HOME/.vim" \
                 "$HOME/.vimrc" \
                 "$HOME/.gvimrc"
-
-sync_repo       "$APP_PATH" \
-                "$REPO_URI" \
-                "$REPO_BRANCH" \
-                "$app_name"
+#
+#sync_repo       "$APP_PATH" \
+#                "$REPO_URI" \
+#                "$REPO_BRANCH" \
+#                "$app_name"
 
 create_symlinks "$APP_PATH" \
                 "$HOME"
